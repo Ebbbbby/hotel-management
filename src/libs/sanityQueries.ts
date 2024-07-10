@@ -1,17 +1,17 @@
+
 import { groq } from "next-sanity";
 
-export const getFeaturedRoomQuery = groq`*[_type == "hotelRoom" && isFeatured == true] [0]{
-_id,
-description,
-images,
-isFeatured,
-name,
-price,
-slug,
-coverImage
-discount
+export const getFeaturedRoomQuery = groq`*[_type == "hotelRoom" && isFeatured == true][0] {
+    _id,
+    description,
+    discount,
+    images,
+    isFeatured,
+    name,
+    price,
+    slug,
+    coverImage
 }`;
-
 
 export const getRoomsQuery = groq`*[_type == "hotelRoom"] {
     _id,
@@ -41,7 +41,7 @@ export const getRoomQuery = groq`*[_type == "hotelRoom" && slug.current == $slug
     price,
     slug,
     specialNote,
-    type,
+    type
 }`;
 
 export const getUserBookingsQuery = groq`*[_type == 'booking' && user._ref == $userId] {
